@@ -21,7 +21,7 @@ describe('About Expects', function() {
     var actualValue = 1 + 1;
 
   // toEqual() compares using common sense equality.
-    expect(2).toEqual(expectedValue);
+    expect(2).toEqual(actualValue);
   });
 
   // Sometimes you need to be precise about what you "type."
