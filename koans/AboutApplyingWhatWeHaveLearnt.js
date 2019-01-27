@@ -98,11 +98,21 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
   it("should find the largest prime factor of a composite number", function () {
+    var compositeNum = 236;
+    var largestPrime = _(_.range(1, compositeNum)).chain()
+                       .filter(function (x) { return compositeNum % x === 0 })
+                       .reduce(function (sum, x) {
+                         if (_(_.range(2, x)).any(function (y) { return x % y === 0 })) {
+                           return sum
+                         } else {
+                           return x
+                         }})
+                        .value();
 
+    expect(largestPrime).toBe(59);
   });
-
+  /*
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
 
   });
