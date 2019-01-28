@@ -1,12 +1,12 @@
-describe("About Functions", function() {
+describe("About Functions", function () {
 
-  it("should declare functions", function() {
+  it("should declare functions", function () {
 
     function add(a, b) {
       return a + b;
     }
 
-    expect(add(1, 2)).toBe(FILL_ME_IN);
+    expect(add(1, 2)).toBe(3);
   });
 
   it("should know internal variables override outer variables", function () {
@@ -21,29 +21,29 @@ describe("About Functions", function() {
       return message;
     }
 
-    expect(getMessage()).toBe(FILL_ME_IN);
-    expect(overrideMessage()).toBe(FILL_ME_IN);
-    expect(message).toBe(FILL_ME_IN);
+    expect(getMessage()).toBe("Outer");
+    expect(overrideMessage()).toBe("Inner");
+    expect(message).toBe("Outer");
   });
 
   it("should have lexical scoping", function () {
     var variable = "top-level";
+
     function parentfunction() {
       var variable = "local";
+
       function childfunction() {
         return variable;
       }
       return childfunction();
     }
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    expect(parentfunction()).toBe("local");
   });
 
   it("should use lexical scoping to synthesise functions", function () {
 
-    function makeMysteryFunction(makerValue)
-    {
-      var newFunction = function doMysteriousThing(param)
-      {
+    function makeMysteryFunction(makerValue) {
+      var newFunction = function doMysteriousThing(param) {
         return makerValue + param;
       };
       return newFunction;
@@ -90,7 +90,9 @@ describe("About Functions", function() {
       return name + " totally rules!";
     };
 
-    var praiseSinger = { givePraise: appendRules };
+    var praiseSinger = {
+      givePraise: appendRules
+    };
     expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
 
     praiseSinger.givePraise = appendDoubleRules;
