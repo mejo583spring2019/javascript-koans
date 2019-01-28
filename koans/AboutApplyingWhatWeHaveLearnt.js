@@ -32,7 +32,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
@@ -40,8 +40,11 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+      const noNuts = products.filter(products => products.containsNuts === false);
+      productsICanEat = products.filter(products => products.hasMushrooms === false);
+      productsICanEat.push(noNuts);
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
@@ -55,14 +58,28 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+    var sum = 0;    /* try chaining range() and reduce() */
+    var numbers = [];
+    //numbers.range(0, 1000);
 
-    expect(233168).toBe(FILL_ME_IN);
+    for (var j = 0; j < 1000; j++) {
+      if (j % 3 === 0 || j % 5 === 0) {
+        numbers[j] = j;
+      } else {
+        numbers[j] = 0;
+      }
+    }
+
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    //numbers.reduce(reducer);
+    //sum = numbers;
+
+    expect(233168).toBe(numbers.reduce(reducer));
   });
 
   /*********************************************************************************/
@@ -75,7 +92,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
@@ -83,7 +100,10 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    ingredientCount.map(ingredients[x]);
+    reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+    expect(ingredientCount['mushrooms']).toBe(ingredientCount.reduce(reducer));
   });
 
   /*********************************************************************************/
@@ -105,9 +125,20 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the difference between the sum of the squares and the square of the sums", function () {
 
   });
+  */
 
   it("should find the 10001st prime", function () {
-
+    var primeCounter = 1; 
+    var i, j = 0;
+    
+    for (i = 3; primeCounter < 10001; i++) {
+      for (j = 2; j <= i/2; j++) {
+        if (i % j != 0) {
+          primeCounter++;
+        }
+      }
+    }
+    return i;
   });
-  */
+  
 });
