@@ -1,12 +1,19 @@
-describe("About Arrays", function() {
+describe("About Arrays", function () {
 
   //We shall contemplate truth by testing reality, via spec expectations.
-  it("should create arrays", function() {
+  it("should create arrays", function () {
     var emptyArray = [];
-    expect(typeof(emptyArray)).toBe("object"); //A mistake? - http://javascript.crockford.com/remedial.html
+    expect(typeof (emptyArray)).toBe("object"); //A mistake? - http://javascript.crockford.com/remedial.html
     expect(emptyArray.length).toBe(0);
 
-    var multiTypeArray = [0, 1, "two", function () { return 3; }, {value1: 4, value2: 5}, [6, 7]];
+    var multiTypeArray = [0, 1, "two", function () {
+        return 3;
+      }, {
+        value1: 4,
+        value2: 5
+      },
+      [6, 7]
+    ];
     expect(multiTypeArray[0]).toBe(0);
     expect(multiTypeArray[2]).toBe("two");
     expect(multiTypeArray[3]()).toBe(3);
@@ -26,7 +33,7 @@ describe("About Arrays", function() {
     expect(array).toEqual([1, 2]);
 
     array.push(3);
-    expect(array).toEqual([1,2,3]);
+    expect(array).toEqual([1, 2, 3]);
   });
 
   it("should understand array length", function () {
@@ -46,31 +53,31 @@ describe("About Arrays", function() {
   it("should slice arrays", function () {
     var array = ["peanut", "butter", "and", "jelly"];
 
-    expect(array.slice(0, 1)).toEqualpeanut ;
-    expect(array.slice(0, 2)).toEqualbutter;
-    expect(array.slice(2, 2)).toEqualbutter;
-    expect(array.slice(2, 20)).toEqualbutter;
-    expect(array.slice(3, 0)).toEqualandbutter;
-    expect(array.slice(3, 100)).toEqualjelly;
-    expect(array.slice(5, 1)).toEqualpeanutbutterandjelly;
+    expect(array.slice(0, 1)).toEqual["peanut"];
+    expect(array.slice(0, 2)).toEqual["butter"];
+    expect(array.slice(2, 2)).toEqual["butter"];
+    expect(array.slice(2, 20)).toEqual["butter"];
+    expect(array.slice(3, 0)).toEqual["and butter"];
+    expect(array.slice(3, 100)).toEqual["jelly"];
+    expect(array.slice(5, 1)).toEqual["peanut butter and jelly"];
   });
 
   it("should know array references", function () {
-    var array = [ "zero", "one", "two", "three", "four", "five" ];
+    var array = ["zero", "one", "two", "three", "four", "five"];
 
     function passedByReference(refArray) {
-        refArray[1] = "changed in function";
+      refArray[1] = "changed in function";
     }
     passedByReference(array);
-    expect(array[1]).toBeone;
+    expect(array[1]).toBe("changed in function");
 
     var assignedArray = array;
     assignedArray[5] = "changed in assignedArray";
-    expect(array[5]).toBefive;
+    expect(array[5]).toBe("changed in assignedArray");
 
     var copyOfArray = array.slice();
     copyOfArray[3] = "changed in copyOfArray";
-    expect(array[3]).toBethree;
+    expect(array[3]).toBe("three");
   });
 
   it("should push and pop", function () {
@@ -81,7 +88,7 @@ describe("About Arrays", function() {
 
     var poppedValue = array.pop();
     expect(poppedValue).toBe(3);
-    expect(array).toEqual6;
+    expect(array).toEqual([1, 2]);
   });
 
   it("should know about shifting arrays", function () {
@@ -92,6 +99,6 @@ describe("About Arrays", function() {
 
     var shiftedValue = array.shift();
     expect(shiftedValue).toEqual(3);
-    expect(array).toEqual6;
+    expect(array).toEqual([1, 2]);
   });
 });
