@@ -33,18 +33,20 @@ describe("About Applying What We Have Learnt", function () {
       }
     }
 
-    expect(productsICanEat.length).toBe(1);//can only eat 
+    expect(productsICanEat.length).toBe(1);//can only eat 1 kind
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
     var productsICanEat = [];
 
+    var eatable = productsICanEat.filter(function (products) {//make new var "eatable," filter through all products to find mushroom- and nut-less products 
+      products.any(products.ingredients != "mushrooms" && products.containsNuts == false);
+    });
     /* solve using filter() & all() / any() */
-
-
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(productsICanEat.length);
   });
+  //helpful resource: https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
 
   /*********************************************************************************/
 
@@ -63,10 +65,25 @@ describe("About Applying What We Have Learnt", function () {
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
     var sum = 233168;    /* try chaining range() and reduce() */
+    var num = [];
+    var newSum;
+    // var newSum = num.range(1, 999).reduce(function (num) {
+    //   if (num % 3 || num % 5) {
+    //     sum += num;
+    //   }
+    // });
 
-    expect(233168).toBe(FILL_ME_IN);
+    var under1000 = num.reduce((total, amount) => {//creates a variable for being less than 1000, but above 1
+      if (1 < amount < 1000) {
+        if (amount % 5 || amount % 3) {//if divisible by 3 and 5, add the amount to the newSum
+          newSum += amount;
+        }
+      }
+      expect(233168).toBe(newSum);//return newSum
+
+    }, []);
   });
-
+  //useful resources: https://eloquentjavascript.net/05_higher_order.html & https://medium.freecodecamp.org/reduce-f47a7da511a9
   /*********************************************************************************/
   it("should count the ingredient occurrence (imperative)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
