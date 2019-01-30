@@ -108,8 +108,17 @@ describe("About Applying What We Have Learnt", function () {
     //   .reduce(ingredientCount)
     //attempt #2
     // var mushroomsCounter = products.filter((products) => {
-    //   var mushroomCount = products.ingredients === 'mushrooms';
+    // var mushroomCount = products.ingredients === 'mushrooms';
     // });
+    //attempt #3
+    // let ingredientCount = products
+    //   .filter((ingredients) => {
+    //     return products.ingredients === 'mushrooms';
+    //   }).map((ingredients) => {
+    //     return products.age * 7
+    //   }).reduce((sum, ingredients) => {
+    //     return sum + ingredients.count;
+    //   });
 
     expect(ingredientCount['mushrooms']).toBe(undefined);
   });
