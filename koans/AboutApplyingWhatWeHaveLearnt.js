@@ -99,11 +99,22 @@ describe("About Applying What We Have Learnt", function () {
 
   it("should count the ingredient occurrence (functional)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
-
     /* chain() together map(), flatten() and reduce() */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    //attempt #1
+    // var mushroomsCount = products.ingredients
+    //   .flatten(ingredientCount == "mushrooms")
+    //   .map(ingredientCount)
+    //   .reduce(ingredientCount)
+    //attempt #2
+    // var mushroomsCounter = products.filter((products) => {
+    //   var mushroomCount = products.ingredients === 'mushrooms';
+    // });
+
+    expect(ingredientCount['mushrooms']).toBe(undefined);
   });
+  //useful resource: https://codeburst.io/javascript-learn-to-chain-map-filter-and-reduce-acd2d0562cd4
+
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
