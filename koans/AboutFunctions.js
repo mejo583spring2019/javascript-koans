@@ -1,6 +1,6 @@
-describe("About Functions", function() {
+describe("About Functions", function () {
 
-  it("should declare functions", function() {
+  it("should declare functions", function () {
 
     function add(a, b) {
       return a + b;
@@ -28,8 +28,10 @@ describe("About Functions", function() {
 
   it("should have lexical scoping", function () {
     var variable = "top-level";
+
     function parentfunction() {
       var variable = "local";
+
       function childfunction() {
         return variable;
       }
@@ -40,10 +42,8 @@ describe("About Functions", function() {
 
   it("should use lexical scoping to synthesise functions", function () {
 
-    function makeMysteryFunction(makerValue)
-    {
-      var newFunction = function doMysteriousThing(param)
-      {
+    function makeMysteryFunction(makerValue) {
+      var newFunction = function doMysteriousThing(param) {
         return makerValue + param;
       };
       return newFunction;
@@ -90,7 +90,9 @@ describe("About Functions", function() {
       return name + " totally rules!";
     };
 
-    var praiseSinger = { givePraise: appendRules };
+    var praiseSinger = {
+      givePraise: appendRules
+    };
     expect(praiseSinger.givePraise("John")).toBe("John rules!");
 
     praiseSinger.givePraise = appendDoubleRules;
